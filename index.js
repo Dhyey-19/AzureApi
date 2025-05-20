@@ -29,9 +29,9 @@ app.get('/', async (req, res) => {
 app.get('/applications', async (req, res) => {
   try {
     console.log('Connecting to SQL Server...');
-    // await sql.connect(config);
-    // const result = await sql.query`SELECT APPNAME FROM DTAPPLICATIONS`;
-    res.json({"hi":"hi"});
+    await sql.connect(config);
+    const result = await sql.query`SELECT APPNAME FROM DTAPPLICATIONS`;
+    res.json(result.recordset);
   } catch (err) {
     console.error('SQL error:', err);
     res.status(500).json({ message: 'Database error', error: err.message });
