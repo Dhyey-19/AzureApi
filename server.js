@@ -17,7 +17,15 @@ const config = {
   }
 };
 
-
+app.get('/', async (req, res) => {
+  try {
+   
+    res.json({"hi":"hi"});
+  } catch (err) {
+    console.error('SQL error:', err);
+    res.status(500).json({ message: 'Database error', error: err.message });
+  }
+});
 app.get('/applications', async (req, res) => {
   try {
     console.log('Connecting to SQL Server...');
