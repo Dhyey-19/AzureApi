@@ -7,10 +7,10 @@ const port = process.env.PORT || 4000;
 app.use(cors());
 
 const config = {
-  user: 'srvadmin',
-  password: 'DTech@38324',
-  server: 'dtech.database.windows.net', // must be a string
-  database: 'dtech',
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  server: process.env.DB_SERVER, // must be a string
+  database: process.env.DB_NAME,
   options: {
     encrypt: true,
     trustServerCertificate: false
